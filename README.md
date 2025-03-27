@@ -7,7 +7,10 @@ The **Student Grade Calculator** is a Python-based application that allows teach
 
 ## Technology Used
 ![Python](https://img.shields.io/badge/Language-Python-blue)
+#Flask
+#HTML
+#CSS
 
 ## Author
 
-- **Nacho Marceca Bootcamp QA**: [Nacho Marceca](<www.nachomarceca.com)
+- **Nacho Marceca Bootcamp QA**: [Nacho Marceca](<www.nachomarceca.com>)
