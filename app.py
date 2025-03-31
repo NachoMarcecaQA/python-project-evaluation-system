@@ -8,31 +8,39 @@ def index():
 
 @app.route("/result", methods=["POST"])
 def calculate_grade():
-    name = request.form["name"].upper() 
-    grade1 = float(request.form["grade1"])
-    grade2 = float(request.form["grade2"])
-    grade3 = float(request.form["grade3"])
+    student_count = 0
+    names = []
+    grade1 = []
+    grade2 = []
+    grade3 = []
+    final_grade = []
+    grade_prompt = []
+    names.append(request.form["name"].upper())
+    grade1.append(float(request.form["grade1"]))
+    grade2.append(float(request.form["grade2"]))
+    grade3.append(float(request.form["grade3"]))
 
-    final_grade = (grade1 + grade2 + grade3) / 3
-    grade_prompt = "SIN NOTA"
+    final_grade.append(
+        round(
+            (
+                grade1[student_count] + 
+                grade2[student_count] + 
+                grade3[student_count]) / 3), 
+            2)
+
     if (final_grade >= 5):
-        grade_prompt = "APROBADO"
+        grade_prompt.append("APROBADO")
     elif (final_grade > 5 & final_grade <= 9 ):
-        grade_prompt = "NOTABLE"
+        grade_prompt.append("NOTABLE")
     else:
-        grade_prompt = "SOBRESALIENTE"
+        grade_prompt.append("SOBRESALIENTE")
 
-    return render_template("result.html", name=name, final_grade=round(final_grade, 2), grade_prompt= grade_prompt)
+    student_count +=1
+
+    return render_template("result.html", names=names, final_grade=round(final_grade, 2), grade_prompt= grade_prompt)
+    
+
 
 if __name__ == "__main__":
     app.run(debug=True)
 
-
-def notaFinal(nota):
-    if (nota > 8):
-        mensaje = "SOBRESALIENTE"
-    elif (nota < 5):
-        mensaje = "SUSPENSO"
-    else:
-        mensaje = "APROBADO"
-    return mensaje
