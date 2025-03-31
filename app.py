@@ -15,6 +15,7 @@ def calculate_grade():
     grade3 = []
     final_grade = []
     grade_prompt = []
+    
     names.append(request.form["name"].upper())
     grade1.append(float(request.form["grade1"]))
     grade2.append(float(request.form["grade2"]))
