@@ -3,12 +3,25 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Students Final Grades</title>
+    <link rel="stylesheet" href="./static/styles.css">
 </head>
 <body>
-    <h2>Students Final Grade</h2>
-    <p><strong>Name:</strong> {{ name }}</p>
-    <p><strong>Final Grade:</strong> {{ final_grade }} {{ grade_prompt }}</p>
-    <a href="/">Go Back</a>     <!-- reset names and grades -->
+    <h2>Students Final Grades</h2>
+    <table >
+        <tr>
+            <th>Name</th>
+            <th>Final Grade</th>
+            <th>Result</th>
+        </tr>
+        {% for student in students %}
+        <tr>
+            <td>{{ student.name }}</td>
+            <td>{{ student.grade }}</td>
+            <td>{{ student.result }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    <a href="/">Go Back</a> 
 </body>
 </html>

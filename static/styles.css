@@ -2,17 +2,83 @@ body {
     font-family: Arial, sans-serif;
     text-align: center;
     margin: 50px;
+    background-color: #000;  /* Black background */
+    color: #fff;  /* White text */
 }
 
-form {
+h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+form, .results-container {
     display: inline-block;
     text-align: left;
     padding: 20px;
-    border: 1px solid #ccc;
+    border: 1px solid #444;
     border-radius: 5px;
+    background-color: #222;  /* Darker background for the form/results */
+    box-shadow: 0px 0px 10px rgba(255, 255, 255, 0.2);
+    width: 100%;
+    max-width: 600px;  /* Ensure it doesn't stretch too wide */
+    margin-top: 20px;
+}
+
+fieldset {
+    border: 1px solid #555;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    background-color: #333;
+}
+
+legend {
+    font-weight: bold;
+    color: #ffcc00;
 }
 
 input, button {
     display: block;
+    width: 100%;
+    padding: 10px;
     margin: 10px 0;
+    border: 1px solid #666;
+    border-radius: 5px;
+    background-color: #444;
+    color: white;
+}
+
+button {
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    border: none;
+}
+
+button:hover {
+    background-color: #ffaa00;
+}
+
+.result-item {
+    background-color: #333;
+    border: 1px solid #444;
+    border-radius: 5px;
+    padding: 15px;
+    margin-bottom: 15px;
+}
+
+a {
+    display: inline-block;
+    margin-top: 20px;
+    padding: 10px 20px;
+    background-color: #ffcc00;
+    color: black;
+    font-weight: bold;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+a:hover {
+    background-color: #ffaa00;
 }

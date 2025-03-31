@@ -8,40 +8,33 @@ def index():
 
 @app.route("/result", methods=["POST"])
 def calculate_grade():
-    student_count = 0
-    names = []
-    grade1 = []
-    grade2 = []
-    grade3 = []
-    final_grade = []
-    grade_prompt = []
-    
-    names.append(request.form["name"].upper())
-    grade1.append(float(request.form["grade1"]))
-    grade2.append(float(request.form["grade2"]))
-    grade3.append(float(request.form["grade3"]))
+    students = []
 
-    final_grade.append(
-        round(
-            (
-                grade1[student_count] + 
-                grade2[student_count] + 
-                grade3[student_count]) / 3), 
-            2)
+    for i in range(1, 6):
+        try:
+            name = request.form[f"name{i}"].strip().upper()
+            grade1 = float(request.form[f"grade{i}_1"])
+            grade2 = float(request.form[f"grade{i}_2"])
+            grade3 = float(request.form[f"grade{i}_3"])
+        except KeyError:
+            return "Missing form data. Please ensure all fields are filled.", 400
+        except ValueError:
+            return "Invalid input. Please enter numeric values for grades.", 400
 
-    if (final_grade >= 5):
-        grade_prompt.append("APROBADO")
-    elif (final_grade > 5 & final_grade <= 9 ):
-        grade_prompt.append("NOTABLE")
-    else:
-        grade_prompt.append("SOBRESALIENTE")
+        final_grade = round((grade1 + grade2 + grade3) / 3, 2)
 
-    student_count +=1
+        if final_grade < 5:
+            result = "FAILED"
+        elif 5 <= final_grade <= 7:
+            result = "PASSED"
+        elif 7 < final_grade <= 9:
+            result = "GOOD"
+        else:
+            result = "EXCELLENT"
 
-    return render_template("result.html", names=names, final_grade=round(final_grade, 2), grade_prompt= grade_prompt)
-    
+        students.append({"name": name, "grade": final_grade, "result": result})
 
+    return render_template("result.html", students=students)
 
 if __name__ == "__main__":
     app.run(debug=True)
-
